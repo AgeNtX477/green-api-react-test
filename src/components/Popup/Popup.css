@@ -1,0 +1,115 @@
+.popup {
+  visibility: hidden;
+  position: fixed;
+  opacity: 0;
+  transition: visibility 0.2s linear, opacity 0.2s linear;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0, 0, 0, 0.5);
+}
+
+.popup_opened {
+  visibility: visible;
+  opacity: 1;
+  transition: 0.7s;
+  z-index: 300;
+}
+
+.popup__container {
+  width: 430px;
+  height: 450px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup__title {
+  font-size: 18px;
+  color: #000000;
+  position: absolute;
+  top: 34px;
+  left: 36px;
+  margin: 0;
+}
+
+.popup__form {
+  width: 100%;
+}
+
+.popup__input {
+  width: 353px;
+  height: 27px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  outline: none;
+}
+
+.popup__input_type_id {
+  position: absolute;
+  left: 36px;
+  top: 130px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 8px 0 13px 5px;
+}
+.popup__input_type_token {
+  position: absolute;
+  left: 36px;
+  top: 210px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 8px 0 13px 5px;
+}
+.popup__input_type_chatId {
+  position: absolute;
+  left: 36px;
+  top: 290px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 8px 0 13px 5px;
+}
+
+.popup__submit {
+  width: 358px;
+  height: 50px;
+  background-color: #000000;
+  color: #ffffff;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.21;
+  text-align: center;
+  position: absolute;
+  bottom: 27px;
+  left: 36px;
+  border-radius: 2px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.popup__close-btn {
+  position: absolute;
+  background-color: transparent;
+  width: 32px;
+  height: 32px;
+  top: -40px;
+  right: -40px;
+  background-image: url(../../images/close-button.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  transition: 0.3s;
+  cursor: pointer;
+}

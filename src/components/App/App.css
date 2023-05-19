@@ -1,0 +1,118 @@
+.main__bckgrnd-green {
+  background-color: #00a884;
+  width: 100%;
+  height: 127px;
+  z-index: -1;
+  position: fixed;
+  top: 0;
+}
+
+.main__content {
+  position: fixed;
+  height: calc(100% - 38px);
+  width: calc(100% - 38px);
+  max-width: 1024px;
+  background-color: white;
+  z-index: 100;
+  margin: 0 auto;
+  top: 17px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.main__header {
+  display: flex;
+}
+
+.main__user-info {
+  width: 50%;
+  padding: 15px;
+  background-color: #f0f2f5;
+  border-right: 1px solid #d9e5f7;
+  max-height: 59px;
+  font-size: 12px;
+}
+
+.main__recipient-num {
+  width: 50%;
+  padding: 15px;
+  font-size: 12px;
+  background-color: #f0f2f5;
+  max-height: 59px;
+}
+
+.main__update-credentials-button {
+  border: 5px solid;
+}
+
+.main__update-credentials-button:hover {
+  cursor: pointer;
+}
+
+.main__chat-table {
+  background-color: #abc8c4;
+  height: 88%;
+  overflow-y: auto;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.main__chat-container {
+  display: flex;
+  flex-direction: column-reverse;
+  max-width: 100%;
+  list-style-type: none;
+  gap: 15px;
+}
+
+.main__message-table {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px 0 25px;
+  background-color: #abc8c4;
+}
+
+.main__chat-message {
+  height: fit-content;
+  max-width: 450px;
+  padding: 15px;
+  background-color: #b5d4b2;
+  margin: 0 25px 0 0;
+  border-radius: 8px;
+  align-self: flex-end;
+}
+
+.main__chat-message_chat-partner {
+  align-self: flex-start;
+  background-color: white;
+}
+
+.main__message-input {
+  width: 90%;
+  height: 30px;
+  background-color: white;
+  align-self: center;
+  border-radius: 5px;
+  font-size: 15px;
+  border: none;
+  padding-left: 10px;
+  outline: none;
+}
+
+.main__send-message-button {
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  width: 8%;
+}
+
+.main__send-message-button:hover {
+  cursor: pointer;
+}
