@@ -58,21 +58,4 @@ export class Api {
       }
     ).then(this.checkResponse)
   }
-
-  /* // метод получения истории сообщений
-  getMessage () {
-    return fetch(
-      `${this.baseUrl}/waInstance${this.idInstance}/getChatHistory/${this.apiTokenInstance}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          chatId: this.chatId,
-          count: this.count
-        })
-      }
-    ).then(this.checkResponse)
-  } */
 }

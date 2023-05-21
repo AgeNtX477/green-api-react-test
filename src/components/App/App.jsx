@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-/* import { Api } from '../../utils/api' */
+import { Api } from '../../utils/api'
 import Popup from '../Popup/Popup'
 
 function App () {
-  /* const url = ' */
+  const url = 'https://api.green-api.com'
 
   // стейт для модалки
   const [isPopupOpen, setPupupOpen] = useState(true)
@@ -24,7 +24,7 @@ function App () {
 
   const [isData, setData] = useState(false)
 
-  /* const chatIdDisplayed = credentials.chatId + '@c.us'
+  const chatIdDisplayed = credentials.chatId + '@c.us'
 
   // экземпляр класса api
   const api = new Api({
@@ -32,8 +32,7 @@ function App () {
     idInstance: credentials.id,
     apiTokenInstance: credentials.token,
     chatId: chatIdDisplayed,
-    count: 1
-  }) */
+  })
 
   const makeid = () => {
     let text = ''
@@ -45,57 +44,55 @@ function App () {
     return text
   }
 
-  let varId = makeid()
-  let varId2 = makeid()
-
   function sendMessage () {
     if (value !== '') {
-      /*  api */
-      /* sendMessage(value)
-        .then(() => { */
-      setMessages([
-        { message: value, ownMessage: true, id: varId },
-        ...messages
-      ])
-      setValue('')
+      let varId = makeid()
+      api
+        .sendMessage(value)
+        .then(() => {
+          setMessages([
+            { message: value, ownMessage: true, id: varId },
+            ...messages
+          ])
+          setValue('')
+        })
+        .catch(err => console.log(`Произошла ошибка: ${err}`))
     }
     console.log(messages)
   }
 
   function getMessage () {
-    /* api
+    let varId2 = makeid()
+    api
       .receiveNotification()
       .then(res => {
-        console.log(res)
         if (res !== null) {
-          if (chatIdDisplayed === res.body.senderData.chatId) { */
-    setMessages([
-      {
-        message: 'Входящее сообщение',
-        ownMessage: false,
-        id: varId2
-      },
-      ...messages
-    ])
-    /*     console.log(messages)
+          if (chatIdDisplayed === res.body.senderData.chatId) {
+            setMessages(oldMessages => [
+              {
+                message: res.body.messageData.textMessageData.textMessage,
+                ownMessage: false,
+                id: varId2
+              },
+              ...oldMessages
+            ])
             api.deleteNotification(res.receiptId)
           } else {
             api.deleteNotification(res.receiptId)
           }
         } else {
           console.log('Уведомлений нет')
-          console.log(messages)
         }
       })
       .catch(err => {
         console.log(err)
-      }) */
+      })
   }
 
   useEffect(() => {
     if (isData) {
       const setIntervalFunction = () => {
-        setInterval(getMessage, 7000)
+        setInterval(getMessage, 5000)
       }
       setIntervalFunction()
     }
@@ -103,12 +100,17 @@ function App () {
 
   function handleСredentialsEnter (data) {
     setCredentials(data)
-    popupToggle()
+    setPupupOpen(false)
     setData(true)
   }
 
-  function popupToggle () {
-    isPopupOpen ? setPupupOpen(false) : setPupupOpen(true)
+  function handlePopupOpen () {
+    setPupupOpen(true)
+    setData(false)
+  }
+
+  function handlePopupClose () {
+    setPupupOpen(false)
   }
 
   return (
@@ -125,7 +127,7 @@ function App () {
           <div className='main__recipient-num'>{`Номер получателя: ${credentials.chatId}`}</div>
           <button
             className='main__update-credentials-button'
-            onClick={getMessage}
+            onClick={handlePopupOpen}
           >
             обновить данные
           </button>
@@ -136,6 +138,7 @@ function App () {
             {messages.map(entry => (
               <li
                 key={entry.id}
+                data={entry.id}
                 className={`main__chat-message ${
                   /* если сообщение наше, то отрисуем его в левом углу, если нет, в правом */
                   !entry.ownMessage ? 'main__chat-message_chat-partner' : ''
@@ -158,13 +161,13 @@ function App () {
             onChange={e => setValue(e.target.value)}
           ></input>
           <button onClick={sendMessage} className='main__send-message-button'>
-            {'=>'}
+            {'отправить'}
           </button>
         </div>
       </main>
       <Popup
         isPopupOpen={isPopupOpen}
-        onClose={popupToggle}
+        onClose={handlePopupClose}
         onSubmit={handleСredentialsEnter}
       />
     </div>
