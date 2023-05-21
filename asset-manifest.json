@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/green-api-react-test/static/css/main.b152eadc.css",
-    "main.js": "/green-api-react-test/static/js/main.35f41bc6.js",
+    "main.css": "/green-api-react-test/static/css/main.d3ef8752.css",
+    "main.js": "/green-api-react-test/static/js/main.41c39c6a.js",
     "index.html": "/green-api-react-test/index.html",
     "static/media/close-button.svg": "/green-api-react-test/static/media/close-button.039f1f5203f653b4bacd.svg",
-    "main.b152eadc.css.map": "/green-api-react-test/static/css/main.b152eadc.css.map",
-    "main.35f41bc6.js.map": "/green-api-react-test/static/js/main.35f41bc6.js.map"
+    "main.d3ef8752.css.map": "/green-api-react-test/static/css/main.d3ef8752.css.map",
+    "main.41c39c6a.js.map": "/green-api-react-test/static/js/main.41c39c6a.js.map"
   },
   "entrypoints": [
-    "static/css/main.b152eadc.css",
-    "static/js/main.35f41bc6.js"
+    "static/css/main.d3ef8752.css",
+    "static/js/main.41c39c6a.js"
   ]
 }
