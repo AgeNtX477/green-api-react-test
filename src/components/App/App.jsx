@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { Api } from '../../utils/api'
+/* import { Api } from '../../utils/api' */
 import Popup from '../Popup/Popup'
 
 function App () {
-  const url = 'https://api.green-api.com'
+  /* const url = ' */
 
   // стейт для модалки
   const [isPopupOpen, setPupupOpen] = useState(true)
@@ -24,7 +24,7 @@ function App () {
 
   const [isData, setData] = useState(false)
 
-  const chatIdDisplayed = credentials.chatId + '@c.us'
+  /* const chatIdDisplayed = credentials.chatId + '@c.us'
 
   // экземпляр класса api
   const api = new Api({
@@ -33,7 +33,7 @@ function App () {
     apiTokenInstance: credentials.token,
     chatId: chatIdDisplayed,
     count: 1
-  })
+  }) */
 
   const makeid = () => {
     let text = ''
@@ -46,39 +46,38 @@ function App () {
   }
 
   let varId = makeid()
+  let varId2 = makeid()
 
   function sendMessage () {
     if (value !== '') {
-      api
-        .sendMessage(value)
-        .then(() => {
-          setMessages([
-            { message: value, ownMessage: true, id: varId },
-            ...messages
-          ])
-          setValue('')
-        })
-        .catch(err => console.log(`Произошла ошибка: ${err}`))
+      /*  api */
+      /* sendMessage(value)
+        .then(() => { */
+      setMessages([
+        { message: value, ownMessage: true, id: varId },
+        ...messages
+      ])
+      setValue('')
     }
     console.log(messages)
   }
 
   function getMessage () {
-    api
+    /* api
       .receiveNotification()
       .then(res => {
         console.log(res)
         if (res !== null) {
-          if (chatIdDisplayed === res.body.senderData.chatId) {
-            setMessages([
-              {
-                message: res.body.messageData.textMessageData.textMessage,
-                ownMessage: false,
-                id: res.body.idMessage
-              },
-              ...messages
-            ])
-            console.log(messages)
+          if (chatIdDisplayed === res.body.senderData.chatId) { */
+    setMessages([
+      {
+        message: 'Входящее сообщение',
+        ownMessage: false,
+        id: varId2
+      },
+      ...messages
+    ])
+    /*     console.log(messages)
             api.deleteNotification(res.receiptId)
           } else {
             api.deleteNotification(res.receiptId)
@@ -90,7 +89,7 @@ function App () {
       })
       .catch(err => {
         console.log(err)
-      })
+      }) */
   }
 
   useEffect(() => {
@@ -111,8 +110,6 @@ function App () {
   function popupToggle () {
     isPopupOpen ? setPupupOpen(false) : setPupupOpen(true)
   }
-
-  /* const sortedMessages = useMemo(getMessage, []) */
 
   return (
     <div className='page'>
@@ -175,35 +172,3 @@ function App () {
 }
 
 export default App
-
-/*  function getMessage () {
-    api
-      .getMessage()
-      .then(res => {
-        let idMessage = res[0].idMessage
-        if (!idArrCopy.includes(idMessage)) {
-          setMessages([
-            { message: res[0].textMessage, ownMessage: false },
-            ...messages
-          ])
-          idArrCopy.push(idMessage)
-          setIdArr(idArrCopy)
-        } else {
-          console.log(`Такой Id уже есть: ${idArr}`)
-        }
-      })
-      .catch(err => console.log(err))
-  } */
-
-/*   useEffect(
-    () => {
-      if (isData) {
-        const setIntervalFunction = () => {
-          setInterval(getMessage, 7000)
-        }
-        setIntervalFunction()
-      }
-    },
-    [isData]
-  )
- */
